@@ -1,4 +1,3 @@
-# todo: adapt to project
 # SK.I.P
 SK.I.P is an abbreviation for "**Sk**ip **I**ntro **P**roject".<br>
 Its goal is to provide an easy to use and extend solution to skip intro videos in video games by either renaming or replacing them. 
