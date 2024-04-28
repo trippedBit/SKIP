@@ -3,7 +3,7 @@ SKIP is an abbreviation for "**Sk**ip **I**ntro **P**roject".<br>
 Its goal is to provide an easy to use and extend solution to skip intro videos in video games by either renaming or replacing them. 
 
 ## Configuration files
-SK.I.P uses yaml based configuration files stored in the folder "configuration_files" and supports the following parameters:
+SKIP uses yaml based configuration files stored in the folder "configuration_files" and supports the following parameters:
 
 Parameter|Description|Example
 |--|--|--|
@@ -13,9 +13,9 @@ files|List of files to rename **or** list of lists with files to replace.<br>`ab
 
 ## Execution
 To rename/replace videos, simple execute<br>
-`python SK.I.P.py all`<br>
+`python SKIP.py all`<br>
 which will apply all configurations or<br>
-`python SK.I.P.py <configuration_file.yaml>`<br>
+`python SKIP.py <configuration_file.yaml>`<br>
 with <configuration_file.yaml> replaced by one of the files available in "configuration_files" to apply one specific configuration only.
 <br><br>
 The following arguments are supported:
