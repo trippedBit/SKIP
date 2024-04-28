@@ -1,3 +1,4 @@
 .vscode/launch.json
 .vscode/settings.json
-SK.I.P.log
+SKIP.log
+__pycache__
