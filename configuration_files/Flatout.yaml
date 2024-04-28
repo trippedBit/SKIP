@@ -1,0 +1,11 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1207658693",
+     "path"]
+folder:
+  - "data//video"
+files:
+  - "bugbear.avi"
+  - "empire.avi"
+  - "intro.avi"
+  - "nvidia.avi"

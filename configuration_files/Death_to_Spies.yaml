@@ -1,0 +1,9 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1426249888",
+     "path"]
+folder:
+  - ""
+files:
+  - intro_1.vid
+  - intro_2.vid

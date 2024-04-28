@@ -1,0 +1,11 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\Ascaron Entertainment\\Darkstar One",
+     "InstalledTo"]
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1207658704",
+     "path"]
+folder:
+  - video/Movies/Eng
+files:
+  - [ascaron.bik, black_pixel.bik]

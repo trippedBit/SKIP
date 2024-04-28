@@ -1,0 +1,9 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1207659034",
+     "PATH"]
+folder:
+  - "Videos"
+files:
+  - "videointro.bik"
+  - "Logos.bik"

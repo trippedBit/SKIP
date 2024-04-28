@@ -1,0 +1,8 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\2016844216",
+     "PATH"]
+folder:
+  - "cayne_Data//StreamingAssets"
+files:
+  - ["the_brotherhood_logo.mp4", "black_pixel.mp4"]

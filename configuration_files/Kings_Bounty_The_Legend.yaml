@@ -1,0 +1,10 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1207658867",
+     "path"]
+folder:
+  - data/video
+files:
+  - katauri_logo800x600.ogm
+  - kbtl-intro-800x600-eng.ogm
+  - 1c_logo_eng.ogm

@@ -1,0 +1,9 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1684624696",
+     "path"]
+folder:
+  - ""
+files:
+  - asy.avi
+  - wan.avi

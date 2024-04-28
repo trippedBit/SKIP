@@ -1,0 +1,8 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1659642973",
+     "path"]
+folder:
+  - "Project_C//Content//Movies"
+files:
+  - "Start_ApsulovGame_02.mp4"

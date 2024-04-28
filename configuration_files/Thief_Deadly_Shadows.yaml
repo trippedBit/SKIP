@@ -1,0 +1,14 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1207659036",
+     "path"]
+folder:
+  - "CONTENT//T3//VideoTextures"
+files:
+  - "copyright_engl_euro_30.bik"
+  - "copyright_engl_fren_30.bik"
+  - "copyright_engl_none_30.bik"
+  - "Eidos-Logo_engl_none_30.bik"
+  - "eax_engl_none_30.bik"
+  - "Ionstorm-Logo_engl_none_30.bik"
+  - "nvidia_engl_none_30.bik"

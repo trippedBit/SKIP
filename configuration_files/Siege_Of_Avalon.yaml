@@ -1,0 +1,9 @@
+registry:
+  - ["HKEY_LOCAL_MACHINE",
+     "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\2085372274",
+     "path"]
+folder:
+  - "Movies"
+files:
+  - SiegeClosing.wmv
+  - SiegeOpening.wmv
