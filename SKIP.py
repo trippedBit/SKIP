@@ -4,8 +4,11 @@ import os
 import shutil
 import subprocess
 import sys
-import winreg
 import yaml
+
+
+if sys.platform == "win32":
+    import winreg
 
 
 def processConfiguration(configurationFile: str,
@@ -16,59 +19,69 @@ def processConfiguration(configurationFile: str,
     :dryRun: True: Call follow-up functions during dryRun, False = Do NOT call follow-up functions during dryRun
     :return: None
     """
-    print("Processing {}".format(configurationFile))
-    logger.info("Processing {}".format(configurationFile))
+    try:
+        print("Processing {}".format(configurationFile))
+        logger.info("Processing {}".format(configurationFile))
 
-    with open("configuration_files/" + configurationFile,
-              "r") as file:
-        configuration = yaml.safe_load(file)
+        with open("configuration_files/" + configurationFile,
+                "r") as file:
+            configuration = yaml.safe_load(file)
 
-    installationFolder = "not set"
-    if sys.platform == "win32":
-        for entry in configuration["registry"]:
-            installationFolder = getFolderFromRegistry(entry[0],
-                                                       entry[1],
-                                                       entry[2])
-            if installationFolder != "not set":
-                break
-    elif sys.platform == "linux":
-        for entry in configuration["find"]:
-            result = subprocess.run("find", "/", "-name", entry, "-type", "d" "2>/dev/null",
-                                    stdout=subprocess.PIPE)
-            installationFolder = result.stdout
-            if installationFolder != "" and installationFolder != "not set":
-                break
-    else:
-        print("Error: Your platform is not supported.")
-        logger.error("Unsupported platform: {}".format(sys.platform))
+        installationFolder = "not set"
+        if sys.platform == "win32":
+            for entry in configuration["registry"]:
+                installationFolder = getFolderFromRegistry(entry[0],
+                                                        entry[1],
+                                                        entry[2])
+                if installationFolder != "not set":
+                    break
+        elif sys.platform == "linux":
+            for entry in configuration["find"]:
+                logger.debug("Processing find entry {}".format(entry))
+                result = subprocess.run(["find", "/", "-name", entry, "-type", "d"],
+                                        stdout=subprocess.PIPE)
+                logger.debug("Process output: {}".format(result.stdout))
+                installationFolder = result.stdout.decode("utf-8").split("\n")[0]
+                if installationFolder != "" and installationFolder != "not set":
+                    break
+        else:
+            print("Error: Your platform is not supported.")
+            logger.error("Unsupported platform: {}".format(sys.platform))
 
-    logger.debug("Installation folder: {}".format(installationFolder))
-    if installationFolder == "not set":
-        print("Installation folder not found!")
-        logger.error("Installation folder not found!")
-        return
+        logger.debug("Installation folder: {}".format(installationFolder))
+        if installationFolder == "not set":
+            print("Installation folder not found!")
+            logger.error("Installation folder not found!")
+            return
 
-    for folder in configuration["folder"]:
-        for file in configuration["files"]:
-            if isinstance(file, list):
-                success: bool = renameFile(installationFolder=installationFolder,
-                                           folder=folder,
-                                           file=file[0],
-                                           dryRun=dryRun)
-                if success or dryRun:
-                    copyReplacement(installationFolder=installationFolder,
-                                    folder=folder,
-                                    file=file[0],
-                                    replacement=file[1],
-                                    dryRun=dryRun)
+        for folder in configuration["folder"]:
+            logger.debug("Processing folder {}".format(folder))
+            for file in configuration["files"]:
+                logger.debug("Processing file {}".format(file))
+                if isinstance(file, list):
+                    logger.debug("file is a list")
+                    success: bool = renameFile(installationFolder=installationFolder,
+                                            folder=folder,
+                                            file=file[0],
+                                            dryRun=dryRun)
+                    if success or dryRun:
+                        copyReplacement(installationFolder=installationFolder,
+                                        folder=folder,
+                                        file=file[0],
+                                        replacement=file[1],
+                                        dryRun=dryRun)
+                    else:
+                        print("ERROR: Renaming failed, skipped replacement.")
+                        logger.error("Renaming failed, skipped replacement.")
                 else:
-                    print("ERROR: Renaming failed, skipped replacement.")
-                    logger.error("Renaming failed, skipped replacement.")
-            else:
-                renameFile(installationFolder=installationFolder,
-                           folder=folder,
-                           file=file,
-                           dryRun=dryRun)
+                    logger.debug("file is a single file")
+                    renameFile(installationFolder=installationFolder,
+                            folder=folder,
+                            file=file,
+                            dryRun=dryRun)
+    except KeyError:
+        logger.exception("Key error")
+        print("Key error")
 
 
 def getFolderFromRegistry(hkeyType: str,
@@ -132,6 +145,9 @@ def renameFile(installationFolder: str,
             else:
                 print("Renaming file NOT successfull")
                 logger.error("Renaming file successfull.")
+    else:
+        print(installationFolder + "/" + folder + "/" + file + " does not exist.")
+        logger.error(installationFolder + "/" + folder + "/" + file + " does not exist.")
 
     return False
 
@@ -179,13 +195,14 @@ def copyReplacement(installationFolder: str,
 
 logger = logging.getLogger(__name__)
 
-registryKeyMapping = {"HKEY_CLASSES_ROOT": winreg.HKEY_CLASSES_ROOT,
-                      "HKEY_CURRENT_CONFIG": winreg.HKEY_CURRENT_CONFIG,
-                      "HKEY_CURRENT_USER": winreg.HKEY_CURRENT_USER,
-                      "HKEY_DYN_DATA": winreg.HKEY_DYN_DATA,
-                      "HKEY_LOCAL_MACHINE": winreg.HKEY_LOCAL_MACHINE,
-                      "HKEY_PERFORMANCE_DATA": winreg.HKEY_PERFORMANCE_DATA,
-                      "HKEY_USERS": winreg.HKEY_USERS}
+if sys.platform == "win32":
+    registryKeyMapping = {"HKEY_CLASSES_ROOT": winreg.HKEY_CLASSES_ROOT,
+                        "HKEY_CURRENT_CONFIG": winreg.HKEY_CURRENT_CONFIG,
+                        "HKEY_CURRENT_USER": winreg.HKEY_CURRENT_USER,
+                        "HKEY_DYN_DATA": winreg.HKEY_DYN_DATA,
+                        "HKEY_LOCAL_MACHINE": winreg.HKEY_LOCAL_MACHINE,
+                        "HKEY_PERFORMANCE_DATA": winreg.HKEY_PERFORMANCE_DATA,
+                        "HKEY_USERS": winreg.HKEY_USERS}
 
 
 def main():
