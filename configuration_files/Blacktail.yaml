@@ -1,0 +1,9 @@
+find:
+  - "BLACKTAIL"
+folder:
+  - "BLACKTAIL//Content//Movies"
+files:
+  - "Startup_Focus.mp4"
+  - "Startup_Focus_NPC.mp4"
+  - "Startup_Parasight.mp4"
+  - "Startup_Parasight_NPC.mp4"
