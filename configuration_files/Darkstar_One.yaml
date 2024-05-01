@@ -6,6 +6,6 @@ registry:
      "SOFTWARE\\WOW6432Node\\GOG.com\\Games\\1207658704",
      "path"]
 folder:
-  - video/Movies/Eng
+  - "video//Movies//Eng"
 files:
-  - [ascaron.bik, black_pixel.bik]
+  - ["ascaron.bik", "black_pixel.bik"]

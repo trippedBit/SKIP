@@ -5,5 +5,5 @@ registry:
 folder:
   - ""
 files:
-  - intro_1.vid
-  - intro_2.vid
+  - "intro_1.vid"
+  - "intro_2.vid"
