@@ -5,5 +5,5 @@ registry:
 folder:
   - ""
 files:
-  - asy.avi
-  - wan.avi
+  - "asy.avi"
+  - "wan.avi"

@@ -5,5 +5,5 @@ registry:
 folder:
   - "Movies"
 files:
-  - SiegeClosing.wmv
-  - SiegeOpening.wmv
+  - "SiegeClosing.wmv"
+  - "SiegeOpening.wmv"
