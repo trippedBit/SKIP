@@ -24,15 +24,15 @@ def processConfiguration(configurationFile: str,
         logger.info("Processing {}".format(configurationFile))
 
         with open("configuration_files/" + configurationFile,
-                "r") as file:
+                  "r") as file:
             configuration = yaml.safe_load(file)
 
         installationFolder = "not set"
         if sys.platform == "win32":
             for entry in configuration["registry"]:
                 installationFolder = getFolderFromRegistry(entry[0],
-                                                        entry[1],
-                                                        entry[2])
+                                                           entry[1],
+                                                           entry[2])
                 if installationFolder != "not set":
                     break
         elif sys.platform == "linux":
@@ -61,9 +61,9 @@ def processConfiguration(configurationFile: str,
                 if isinstance(file, list):
                     logger.debug("file is a list")
                     success: bool = renameFile(installationFolder=installationFolder,
-                                            folder=folder,
-                                            file=file[0],
-                                            dryRun=dryRun)
+                                               folder=folder,
+                                               file=file[0],
+                                               dryRun=dryRun)
                     if success or dryRun:
                         copyReplacement(installationFolder=installationFolder,
                                         folder=folder,
@@ -76,9 +76,9 @@ def processConfiguration(configurationFile: str,
                 else:
                     logger.debug("file is a single file")
                     renameFile(installationFolder=installationFolder,
-                            folder=folder,
-                            file=file,
-                            dryRun=dryRun)
+                               folder=folder,
+                               file=file,
+                               dryRun=dryRun)
     except KeyError:
         logger.exception("Key error")
         print("Key error")
@@ -197,12 +197,12 @@ logger = logging.getLogger(__name__)
 
 if sys.platform == "win32":
     registryKeyMapping = {"HKEY_CLASSES_ROOT": winreg.HKEY_CLASSES_ROOT,
-                        "HKEY_CURRENT_CONFIG": winreg.HKEY_CURRENT_CONFIG,
-                        "HKEY_CURRENT_USER": winreg.HKEY_CURRENT_USER,
-                        "HKEY_DYN_DATA": winreg.HKEY_DYN_DATA,
-                        "HKEY_LOCAL_MACHINE": winreg.HKEY_LOCAL_MACHINE,
-                        "HKEY_PERFORMANCE_DATA": winreg.HKEY_PERFORMANCE_DATA,
-                        "HKEY_USERS": winreg.HKEY_USERS}
+                          "HKEY_CURRENT_CONFIG": winreg.HKEY_CURRENT_CONFIG,
+                          "HKEY_CURRENT_USER": winreg.HKEY_CURRENT_USER,
+                          "HKEY_DYN_DATA": winreg.HKEY_DYN_DATA,
+                          "HKEY_LOCAL_MACHINE": winreg.HKEY_LOCAL_MACHINE,
+                          "HKEY_PERFORMANCE_DATA": winreg.HKEY_PERFORMANCE_DATA,
+                          "HKEY_USERS": winreg.HKEY_USERS}
 
 
 def main():
