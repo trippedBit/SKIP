@@ -1,0 +1,8 @@
+find:
+  - "Deliver Us The Moon"
+folder:
+  - "MoonMan//Content//Movies//Splash"
+  - "MoonMan//Content//Movies//LaunchsiteIntro"
+files:
+  - "Dutm_SplashScreen.mp4"
+  - "Dutm_Intro_NoSound.mp4"
