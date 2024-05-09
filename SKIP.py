@@ -238,6 +238,11 @@ def main():
                 processConfiguration(configurationFile=file,
                                      dryRun=arguments.dryRun)
     else:
+        if arguments.configuration.startswith("configuration_files/"):
+            logger.info("Configuration preceded by configuration folder, removing folder...")
+            arguments.configuration = arguments.configuration.replace("configuration_files/",
+                                                                      "")
+            logger.debug("Configuration file after removing folder: {}".format(arguments.configuration))
         processConfiguration(arguments.configuration)
 
     logging.shutdown()
