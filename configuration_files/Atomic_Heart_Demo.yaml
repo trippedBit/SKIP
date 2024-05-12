@@ -1,0 +1,10 @@
+find:
+  - "AtomicHeart"
+folder:
+  - "Content//Movies"
+files:
+  - "Launch_4k_60FPS_PS5.mp4"
+  - "Launch_4k_60FPS_XboxXS.mp4"
+  - "Launch_FHD_30FPS_PS4.mp4"
+  - "Launch_FHD_30FPS_XboxOne.mp4"
+  - "Launch_FHD_60FPS_PC_Steam.mp4"
