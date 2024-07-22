@@ -1,0 +1,10 @@
+find:
+  - "KillerIsDead"
+folder:
+  - "KidGame//Movies"
+files:
+  - "CL_Deepsilver.bik"
+  - "CL_Kadokawa.bik"
+  - "CL_KochMedia.bik"
+  - "CL_GhM.bik"
+  - "CL_UTech.bik"
