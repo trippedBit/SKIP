@@ -1,0 +1,10 @@
+find:
+  - "HOMEFRONT"
+folder:
+  - "GCGame//Movies"
+files:
+  - "THQ.bik"
+  - "ThreeLogos.bik"
+  - "NVidia.bik"
+  - "DE_Logo.bik"
+  - "LegalScreen_PC.bik"
